@@ -1,3 +1,5 @@
+@import '../../../scss/main';
+
 .background-container {
     display: flex;
     justify-content: center;
@@ -6,15 +8,48 @@
     height: 100vh;
     background-size: cover;
 
+    @include extra-small {
+        & {
+            background-image: none;
+        }
+    }
+
     .content-container {
         display: flex;
         flex-direction: column;
         align-content: center;
         align-self: center;
         width: 30%;
-        height: 80%;
+        height: 85%;
         background-color: #fefefe;
         border-radius: 1rem;
+        overflow-y: auto;
+
+        @include large {
+            & {
+                width: 35%;
+            }
+        }
+
+        @include medium {
+            & {
+                width: 50%;
+            }
+        }
+
+        @include small {
+            & {
+                width: 60%;
+                height: 90%;
+            }
+        }
+
+        @include extra-small {
+            & {
+                width: 90%;
+                height: 95%;
+            }
+        }
 
         .title-container {
             display: flex;
@@ -23,6 +58,20 @@
             height: 3rem;
             align-items: center;
             margin: 1.5rem;
+
+            @include medium {
+                & {
+                    margin: 1rem;
+
+                    .title {
+                        font-size: 1.5rem;
+                    }
+
+                    .title-img {
+                        height: 2rem;
+                    }
+                }
+            }
 
             .title-img {
                 height: 3rem;

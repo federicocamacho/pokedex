@@ -35,7 +35,7 @@ export class LoginComponent implements OnInit {
       const foundUser = users.find(user => user.email === email && user.password === password);
       if (foundUser) {
         this.authService.user = foundUser;
-        this.router.navigate(['/']);
+        this.router.navigate(['/pokedex']);
         return;
       }
     }

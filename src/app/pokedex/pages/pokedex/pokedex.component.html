@@ -1,1 +1,5 @@
-<p>pokedex works!</p>
+<div class="pokedex-container">
+    <div class="pokemon" *ngFor="let pokemon of pokemons">
+          <pk-pokemon-card [pokemon]="pokemon"></pk-pokemon-card>
+    </div>
+</div>

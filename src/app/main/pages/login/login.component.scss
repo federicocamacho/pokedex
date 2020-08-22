@@ -1,9 +1,16 @@
 @import '../auth/auth-base';
+@import '../../../scss/main';
 
 .user-img-container {
     display: flex;
     justify-content: center;
-    margin: 3rem;
+    margin: 2rem;
+
+    @include large {
+        & {
+            margin: 1.5rem;
+        }
+    }
 
     img {
         width: 140px;

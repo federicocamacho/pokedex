@@ -1,7 +1,14 @@
 @import '../auth/auth-base';
+@import '../../../scss/main';
 
 .form-container {
-    margin-top: 3rem;
+    margin-top: 2rem;
+
+    @include large {
+        & {
+            margin: 1rem;
+        }
+    }
 
     .errors-container {
         height: 5rem !important;

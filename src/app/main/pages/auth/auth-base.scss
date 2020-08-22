@@ -1,3 +1,5 @@
+@import '../../../scss/main';
+
 .form-container {
     display: flex;
     flex-direction: column;
@@ -5,7 +7,13 @@
 
     mat-form-field,
     .auth-button {
-        width: 50%;
+        width: 70%;
+
+        @include extra-large {
+            & {
+                width: 60% !important;
+            }
+        }
     }
 
     .errors-container {

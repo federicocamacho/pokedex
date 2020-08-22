@@ -1,17 +1,13 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { LoginComponent } from './main/pages/login/login.component';
-import { SigninComponent } from './main/pages/signin/signin.component';
+import { AuthComponent } from './main/pages/auth/auth.component';
 import { AuthGuard } from './shared/guards/auth.guard';
 
 const routes: Routes = [
     {
-        path: 'login',
-        component: LoginComponent
-    },
-    {
-        path:  'signin',
-        component: SigninComponent
+        path: '',
+        component: AuthComponent,
+        loadChildren: () => import('./main/main.module').then(m => m.MainModule),
     },
     {
         path: 'pokedex',

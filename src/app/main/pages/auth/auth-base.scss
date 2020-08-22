@@ -1,0 +1,19 @@
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    mat-form-field,
+    .auth-button {
+        width: 50%;
+    }
+
+    .errors-container {
+        text-align: center;
+        height: 3rem;
+
+        .help-block {
+            color: var(--primary-color);
+        }
+    }
+}

@@ -1,0 +1,9 @@
+@import '../auth/auth-base';
+
+.form-container {
+    margin-top: 3rem;
+
+    .errors-container {
+        height: 5rem !important;
+    }
+}

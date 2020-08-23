@@ -3,9 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Pokedex, PokemonInfo } from '../models/pokedex.model';
+import { Pokedex, PokemonInfo, Specie } from '../models/pokedex.model';
 import { PokemonDetail } from '../models/pokemon-detail.model';
-import { Pokemon } from '../models/pokemon.model';
+import { EvolutionChainDetail, Pokemon } from '../models/pokemon.model';
 import { Util } from '../utils/util';
 
 @Injectable({
@@ -47,5 +47,13 @@ export class PokedexApiService {
   public loadPokemon(url: string): Observable<Pokemon> {
     return this.http.get<PokemonDetail>(url)
       .pipe(map((detail: PokemonDetail) => Util.mapPokemonDetailToPokemon(detail)));
+  }
+
+  public getSpecie(url: string): Observable<Specie> {
+    return this.http.get<Specie>(url);
+  }
+
+  public getEvolutionChain(url: string): Observable<EvolutionChainDetail> {
+    return this.http.get<EvolutionChainDetail>(url);
   }
 }

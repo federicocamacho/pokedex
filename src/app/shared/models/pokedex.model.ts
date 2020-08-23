@@ -1,3 +1,4 @@
+
 export interface Pokedex {
     count: number;
     next: string;
@@ -8,4 +9,8 @@ export interface Pokedex {
 export interface PokemonInfo {
     name: string;
     url: string;
+}
+
+export interface Specie {
+    evolution_chain: { url: string };
 }

@@ -1,39 +1,31 @@
 @import '../../../scss/main';
 
-.pokedex-container {
+.pokemon {
+    width: 15%;
+    margin: 1rem;
+
+    @include large {
+        & {
+            width: 22%;
+        }
+    }
+
+    @include small {
+        & {
+            width: 35%;
+        }
+    }
+
+    @include extra-small {
+        & {
+            width: 70%;
+        }
+    }
+}
+
+.loader-container {
     display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+    align-items: center;
     justify-content: center;
-    margin-top: 1rem;
-
-    .pokemon {
-        width: 15%;
-        margin: 1rem;
-
-        @include large {
-            & {
-                width: 22%;
-            }
-        }
-
-        @include small {
-            & {
-                width: 35%;
-            }
-        }
-
-        @include extra-small {
-            & {
-                width: 70%;
-            }
-        }
-    }
-
-    .loader-container {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        height: 204px;
-    }
+    height: 204px;
 }

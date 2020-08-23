@@ -10,3 +10,11 @@ body {
     font-size: 62.5%; //1 rem = 10px; 10px/16px = 62.5%
     font-family: 'Poppins', sans-serif !important;
 }
+
+.pokedex-container {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 1rem;
+}

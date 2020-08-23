@@ -1,1 +1,65 @@
-<p>pokemon works!</p>
+<div class="pokedex-container">
+    <div class="pokemon-container">
+        <div class="main-container">
+            <div class="basic-info">
+                <h5 class="pokemon-name">{{ pokemon?.name | titlecase }}</h5>
+                <img [src]="pokemon?.image" alt="(pokemon?.name" class="pokemon-img" />
+            </div>
+            <div class="basic-details">
+                <div class="detail-row">
+                    <span class="detail-name">Id:</span>
+                    <div class="detail-value-container">
+                        <span class="detail-value">{{ pokemon?.id }}</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-name">Altura:</span>
+                    <div class="detail-value-container">
+                        <span class="detail-value">{{ pokemon?.height }}</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-name">Peso:</span>
+                    <div class="detail-value-container">
+                        <span class="detail-value">{{ pokemon?.weight }}</span>
+                    </div>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-name">Tipo(s):</span>
+                    <div class="detail-value-container">
+                        <mat-chip-list class=" detail-value pokemon-types" *ngIf="pokemon?.types">
+                            <mat-chip *ngFor="let type of pokemon?.types"> {{ type }}</mat-chip>
+                        </mat-chip-list>
+                    </div>
+                </div>
+                <div class="back-container">
+                    <button
+                        mat-raised-button
+                        color="primary"
+                        (click)="goBack()">
+                        IR ATRAS
+                    </button>
+                </div>
+            </div>
+        </div>
+        <div class="detail-container">
+            <div class="detail-row list-row">
+                <span class="detail-name">Movimientos:</span>
+                <div class="detail-value-container">
+                    <mat-chip-list class=" detail-value pokemon-types">
+                        <mat-chip *ngFor="let move of pokemon?.moves"> {{ move | movement | titlecase }}</mat-chip>
+                    </mat-chip-list>
+                </div>
+            </div>
+            <div class="detail-row list-row" style="margin-top: 1rem">
+                <span class="detail-name">Cadena evolutiva:</span>
+                <div class="detail-value-container evolutions-container">
+                    <div class="evolution-container" *ngFor="let evolution of evolutionChain" (click)="goToPokemon(evolution.name)">
+                        <span class="evolution-name">{{ evolution.name | titlecase }}</span>
+                        <img [src]="evolution.url" [alt]="evolution.name" class="evolution-img" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -4,9 +4,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MovementPipe } from './pipes/movement.pipe';
 
 @NgModule({
-  declarations: [],
+  declarations: [MovementPipe],
   imports: [
     CommonModule,
     FormsModule,
@@ -20,7 +21,8 @@ import { MatInputModule } from '@angular/material/input';
     ReactiveFormsModule,
     MatInputModule,
     MatButtonModule,
-    MatIconModule
+    MatIconModule,
+    MovementPipe
   ]
 })
 export class SharedModule { }

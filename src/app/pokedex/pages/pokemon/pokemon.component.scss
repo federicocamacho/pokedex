@@ -1,0 +1,184 @@
+@import '../../../scss/main';
+
+.pokedex-container {
+    height: calc(100vh - 170px);
+    overflow-y: scroll;
+}
+
+.pokemon-container {
+    display: flex;
+    width: 80%;
+
+    @include medium() {
+        & {
+            width: 90%;
+
+            .main-container {
+                margin-right: 1rem !important;
+            }
+
+                mat-chip.mat-chip {
+                font-size: 0.7rem;
+            }
+        }
+    }
+
+    .main-container {
+        display: flex;
+        flex-direction: column;
+        min-width: 30%;
+        margin-right: 2rem;
+        align-items: center;
+        padding: 2rem 1rem;
+        border: 1px solid #c9c9c9;
+        border-radius: 1rem;
+        box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+        align-self: flex-start;
+        background-color: #fff;
+
+        .basic-info {
+            display: flex;
+            flex-direction: column;
+            align-content: center;
+            align-items: center;
+        }
+
+        .basic-details {
+            display: flex;
+            flex-direction: column;
+            align-self: flex-start;
+            width: 100%;
+            padding: 0 1rem;
+        }
+
+        .pokemon-name {
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            font-weight: 400;
+            letter-spacing: 1px;
+            margin-top: 1rem;
+
+            @include medium() {
+                & {
+                    font-size: 1.5rem;
+                }
+            }
+        }
+
+        .pokemon-img {
+            min-width: 120px;
+        }
+
+        .back-container {
+            display: flex;
+            justify-content: center;
+            margin: 1rem 0;
+        }
+    }
+
+    .detail-container {
+        display: flex;
+        flex-direction: column;
+
+        .list-row {
+            flex-direction: column;
+            align-items: flex-start;
+
+            .detail-name {
+                text-align: left;
+                margin-bottom: 1rem;
+            }
+        }
+    }
+
+    .detail-row {
+        display: flex;
+        width: 100%;
+        margin: 7px;
+        font-size: 1.2rem;
+        align-items: center;
+
+        @include medium() {
+            & {
+                font-size: 0.9rem;
+            }
+        }
+
+        .detail-name {
+            padding-right: 1rem;
+            min-width: 40%;
+            font-weight: bold;
+            text-align: left;
+        }
+    }
+
+    .evolutions-container {
+        display: flex;
+        max-width: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+
+        .evolution-container {
+            display: flex;
+            flex-direction: column;
+            width: 150px;
+            align-items: center;
+            padding: 5px;
+            border: 1px solid #c9c9c9;
+            border-radius: 1rem;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            background-color: #fff;
+            margin: 5px;
+            padding-top: 1rem;
+
+            &:hover {
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+@include small {
+    .pokemon-container {
+        flex-direction: column;
+
+        .main-container {
+            border: none;
+            box-shadow: none;
+            background-color: transparent;
+            width: 100%;
+            flex-direction: row;
+            margin: 0;
+            padding: 0;
+        }
+
+        .detail-name {
+            min-width: 80px !important;
+        }
+
+        .pokemon-name {
+            margin: 0;
+            font-size: 1rem !important;
+        }
+
+        .basic-info {
+            width: 40%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            border: 1px solid #c9c9c9;
+            border-radius: 1rem;
+            box-shadow: 2px 2px 4px rgba(0, 0, 0, 0.15);
+            padding: 5px;
+            background-color: #fff;
+        }
+
+        .detail-container {
+            margin-top: 1rem;
+        }
+
+        .back-container button {
+            width: 80%;
+        }
+    }
+}

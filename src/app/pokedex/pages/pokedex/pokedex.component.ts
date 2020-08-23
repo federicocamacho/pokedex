@@ -51,7 +51,7 @@ export class PokedexComponent extends Subscribable implements OnInit {
     return pokemonsToLoad
         .pipe(
           mergeAll(),
-          concatMap((pokemonInfo: PokemonInfo) => this.loadPokemonInfo(pokemonInfo)),
+          concatMap((pokemonInfo: PokemonInfo) => this.pokedexService.loadPokemonInfo(pokemonInfo)),
         );
   }
 
@@ -99,19 +99,6 @@ export class PokedexComponent extends Subscribable implements OnInit {
     return pokemon.name.search(regExp) !== -1 || pokemon.types.findIndex(type => regExp.test(type)) !== -1;
   }
 
-  private loadPokemonInfo(pokemonInfo: PokemonInfo): Observable<Pokemon> {
-    const cachedResult = this.pokedexService.pokemonDetail.get(pokemonInfo.name);
-
-    if (cachedResult) {
-      return of(cachedResult);
-    }
-
-    return this.pokedexAPIService.loadPokemon(pokemonInfo.url)
-      .pipe(
-        tap((pokemon: Pokemon) => this.pokedexService.pokemonDetail[pokemon.name] = pokemon));
-
-  }
-
   public onScroll(): void {
     if (!this.pokedexService.allPokemons || this.pokemons.length < this.offset) {
       return;
@@ -128,7 +115,7 @@ export class PokedexComponent extends Subscribable implements OnInit {
       scrollObservable = of(pokemons)
         .pipe(
           mergeAll(),
-          concatMap((pokemonInfo: PokemonInfo) => this.loadPokemonInfo(pokemonInfo))
+          concatMap((pokemonInfo: PokemonInfo) => this.pokedexService.loadPokemonInfo(pokemonInfo))
         );
     }
 

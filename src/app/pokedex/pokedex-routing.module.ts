@@ -15,7 +15,7 @@ const routes: Routes = [
         component: PokedexComponent
       },
       {
-        path: ':pokemonId',
+        path: ':pokemonName',
         component: PokemonComponent
       }
     ]

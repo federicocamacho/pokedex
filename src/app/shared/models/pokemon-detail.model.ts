@@ -64,7 +64,7 @@ interface Ability {
   slot: number;
 }
 
-interface NameUrl {
+export interface NameUrl {
   name: string;
   url: string;
 }

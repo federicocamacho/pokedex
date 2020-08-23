@@ -1,29 +1,34 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
-import { Subscribable } from 'src/app/shared/utils/subscribable';
 
 @Component({
   selector: 'pk-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
-export class HomeComponent extends Subscribable implements OnInit {
+export class HomeComponent implements OnInit {
 
   public searchForm: FormGroup;
 
   constructor(
     private authService: AuthService,
     private router: Router,
-    private formBuilder: FormBuilder) {
-      super();
+    private formBuilder: FormBuilder,
+    private route: ActivatedRoute) {
     }
 
   ngOnInit(): void {
+    const search = this.route.snapshot.queryParams.search;
     this.searchForm = this.formBuilder.group({
-      search: ['']
+      search: [search || '']
     });
+
+    if (!!search) {
+      this.search();
+    }
+
   }
 
   private getSearchCriteria(): string {
@@ -40,5 +45,7 @@ export class HomeComponent extends Subscribable implements OnInit {
   }
 
   public search(): void {
+    const search = this.getSearchCriteria();
+    this.router.navigate(['/pokedex'], { queryParams: { search }});
   }
 }

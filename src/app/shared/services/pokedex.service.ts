@@ -8,6 +8,7 @@ import { Pokemon } from '../models/pokemon.model';
 export class PokedexService {
 
   public allPokemons: PokemonInfo[];
+  public pokemonCount: number;
   public pokemonDetail: Map<string, Pokemon> = new Map();
 
   constructor() { }

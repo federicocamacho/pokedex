@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { environment } from 'src/environments/environment';
-import { Pokedex } from '../models/pokedex.model';
+import { Pokedex, PokemonInfo } from '../models/pokedex.model';
 import { PokemonDetail } from '../models/pokemon-detail.model';
 import { Pokemon } from '../models/pokemon.model';
 import { Util } from '../utils/util';
@@ -33,8 +33,9 @@ export class PokedexApiService {
    *
    * @returns all the pokemons as an Observable.
    */
-  public getAllPokemons(): Observable<Pokedex> {
-    return this.getPokemons(0, this.results);
+  public getAllPokemons(): Observable<PokemonInfo[]> {
+    return this.getPokemons(0, this.results)
+      .pipe(map(result => result.results));
   }
 
   /**

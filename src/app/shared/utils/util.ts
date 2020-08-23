@@ -7,15 +7,9 @@ export class Util {
            name: detail.name,
            image: detail.sprites.front_default,
            types: detail.types.map(type => type.type.name),
-           abilities: detail.abilities
-             .filter(ability => !ability.is_hidden)
-             .map(ability => ability.ability.name),
-           baseExperience: detail.base_experience,
            height: detail.height,
            id: detail.id,
            moves: detail.moves.map(move => move.move.name),
-           order: detail.order,
-           stats: detail.stats.map(stat => Util.mapStat(stat)),
            weight: detail.weight
         };
      }

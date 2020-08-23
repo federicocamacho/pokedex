@@ -1,27 +1,29 @@
-<p>
-    <mat-toolbar color="primary">
-        <div class="logo-container" (click)="goToHome()">
-            <img src="assets/images/pokemon.png" alt="Pókedex" class="logo-img">
-            <span>PÓKEDEX</span>
-        </div>
-        <span class="spacer"></span>
-        <button mat-icon-button class="logout-icon" (click)="logout()">
-            <mat-icon>exit_to_app</mat-icon>
-        </button>
-    </mat-toolbar>
-</p>
-<div class="page-container">
-    <div class="content-container">
-        <form [formGroup]="searchForm" class="form-container" (ngSubmit)="search()">
-            <input
-                class="search-input"
-                type="text"
-                placeholder="Buscar Pókemon"
-                formControlName="search" />
-            <button mat-icon-button type="submit" class="search-button">
-                <mat-icon>search</mat-icon>
+<div class="home-container">
+    <div class="header-container">
+        <mat-toolbar color="primary">
+            <div class="logo-container" (click)="goToHome()">
+                <img src="assets/images/pokemon.png" alt="Pókedex" class="logo-img">
+                <span>PÓKEDEX</span>
+            </div>
+            <span class="spacer"></span>
+            <button mat-icon-button class="logout-icon" (click)="logout()">
+                <mat-icon>exit_to_app</mat-icon>
             </button>
-        </form>
-        <router-outlet></router-outlet>
+        </mat-toolbar>
+        <div class="page-container">
+            <div class="content-container">
+                <form [formGroup]="searchForm" class="form-container" (ngSubmit)="search()">
+                    <input
+                        class="search-input"
+                        type="text"
+                        placeholder="Buscar Pókemon"
+                        formControlName="search" />
+                    <button mat-icon-button type="submit" class="search-button">
+                        <mat-icon>search</mat-icon>
+                    </button>
+                </form>
+            </div>
+        </div>
     </div>
+    <router-outlet></router-outlet>
 </div>

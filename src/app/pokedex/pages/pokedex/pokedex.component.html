@@ -1,5 +1,11 @@
-<div class="pokedex-container">
+<pk-infinite-scroll
+    style="height: calc(100vh - 170px); overflow-y: scroll"
+    (scrolled)="onScroll()"
+    class="pokedex-container">
     <div class="pokemon" *ngFor="let pokemon of pokemons">
-          <pk-pokemon-card [pokemon]="pokemon"></pk-pokemon-card>
+        <pk-pokemon-card [pokemon]="pokemon"></pk-pokemon-card>
     </div>
-</div>
+    <div class="loader-container pokemon" *ngIf="busy">
+        <mat-spinner></mat-spinner>
+    </div>
+</pk-infinite-scroll>

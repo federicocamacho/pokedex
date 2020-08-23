@@ -1,5 +1,15 @@
 @import '../../../scss/main';
 
+.home-container {
+    height: 100vh;
+    overflow-y: hidden;
+    background-color: #fafafa;
+
+    .header-container {
+        height: 170px;
+    }
+}
+
 .logo-container {
     display: flex;
 
@@ -33,7 +43,15 @@
         margin: 1.5rem;
 
         @include large {
-            width: 90%;
+            & {
+                width: 90%;
+            }
+        }
+
+        @include extra-small {
+            & {
+                width: 100%;
+            }
         }
 
         .form-container {
@@ -44,17 +62,30 @@
             border: 2px solid #888;
             padding: 5px 1rem;
             border-radius: 1rem;
+            font-size: 1rem;
+
+            @include small {
+                & {
+                    width: 60%;
+                }
+            }
+
+            @include extra-small {
+                & {
+                    width: 70%;
+                }
+            }
 
             input.search-input {
                 border: none;
                 display: flex;
-                flex: 1 1 auto;
                 outline: none;
                 font-family: "Poppins", sans-serif;
-                font-size: 1rem;
+                background-color: transparent;
             }
 
             button.search-button {
+                display: flex;
                 color: #888;
             }
         }

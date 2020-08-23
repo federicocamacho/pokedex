@@ -1,15 +1,11 @@
 export interface Pokemon {
-    name: string;
     image: string;
-    types: string[];
-    abilities: string[];
-    baseExperience: number;
-    height: number;
     id: number;
-    moves: string[];
-    order: number;
-    stats: NameValue[];
+    name: string;
+    types: string[];
+    height: number;
     weight: number;
+    moves: string[];
 }
 
 export interface NameValue {

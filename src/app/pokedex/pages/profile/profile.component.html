@@ -1,0 +1,12 @@
+<div class="pokedex-container">
+    <div class="profile-container">
+        <h1 class="title">Perfil</h1>
+        <pk-user-form
+            [user]="user"
+            (submitted)="updateProfile($event)"
+            submitAction="ACTUALIZAR"
+            showCancel="false"
+            disableEmail="true"
+        ></pk-user-form>
+    </div>
+</div>

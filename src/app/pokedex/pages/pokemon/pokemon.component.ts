@@ -1,10 +1,12 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { of } from 'rxjs';
-import { concatMap, map, mergeAll, switchMap, tap } from 'rxjs/operators';
+import { Observable, of } from 'rxjs';
+import { catchError, concatMap, map, mergeAll, switchMap, tap } from 'rxjs/operators';
 import { PokemonInfo, Specie } from 'src/app/shared/models/pokedex.model';
 import { NameUrl } from 'src/app/shared/models/pokemon-detail.model';
 import { EvolutionChain, EvolutionChainDetail, Pokemon } from 'src/app/shared/models/pokemon.model';
+import { MessageService } from 'src/app/shared/services/message.service';
 import { PokedexApiService } from 'src/app/shared/services/pokedex-api.service';
 import { PokedexService } from 'src/app/shared/services/pokedex.service';
 import { Subscribable } from 'src/app/shared/utils/subscribable';
@@ -19,12 +21,14 @@ export class PokemonComponent extends Subscribable implements OnInit {
 
   public pokemon: Pokemon;
   public evolutionChain: NameUrl[] = [];
+  public notFound: boolean;
 
   constructor(
     private route: ActivatedRoute,
     private pokedexService: PokedexService,
     private pokedexAPIService: PokedexApiService,
-    private router: Router) {
+    private router: Router,
+    private messageService: MessageService) {
       super();
     }
 
@@ -35,9 +39,23 @@ export class PokemonComponent extends Subscribable implements OnInit {
         map((name: string) => ({ name, url: `${ environment.pokedexAPI }/pokemon/${ name }`})),
         switchMap((pokemon: PokemonInfo) => this.pokedexService.loadPokemonInfo(pokemon)),
         tap((pokemon: Pokemon) => this.setCurrent(pokemon)),
-        concatMap((pokemon: Pokemon) => this.getEvolutionChain(pokemon))
+        concatMap((pokemon: Pokemon) => this.getEvolutionChain(pokemon)),
+        catchError(err => this.handleSearchError(err))
       )
       .subscribe((evolution: NameUrl) => this.evolutionChain.push(evolution));
+  }
+
+  private handleSearchError(err: any): Observable<NameUrl> {
+    if (err instanceof HttpErrorResponse) {
+      const error = err as HttpErrorResponse;
+      if (error.status === 404) {
+        this.notFound = true;
+      } else {
+        this.messageService.showError('No se pudo cargar la información del pokemon: ' + error.message);
+      }
+    }
+
+    return of(null);
   }
 
   public goBack(): void {
@@ -49,6 +67,7 @@ export class PokemonComponent extends Subscribable implements OnInit {
   }
 
   private setCurrent(pokemon: Pokemon): void {
+    this.notFound = false;
     this.pokemon = pokemon;
     this.evolutionChain = [];
   }

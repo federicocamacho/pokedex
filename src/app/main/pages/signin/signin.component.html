@@ -1,53 +1,7 @@
-<form [formGroup]="signinForm" class="form-container" (ngSubmit)="signin()">
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Nombre</mat-label>
-        <input matInput type="text" placeholder="Nombre" formControlName="name"/>
-    </mat-form-field>
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Correo electrónico</mat-label>
-        <input matInput type="email" placeholder="Correo electrónico" formControlName="email" email="true" />
-    </mat-form-field>
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="password" placeholder="Contraseña" formControlName="password" />
-    </mat-form-field>
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Confirmar contraseña</mat-label>
-        <input matInput type="password" placeholder="Confirmar contraseña" formControlName="passwordCheck" />
-    </mat-form-field>
-    <div class="errors-container">
-        <div *ngIf="signinForm.controls.name.touched && signinForm.controls.name.errors" class="help-block">
-          <div *ngIf="signinForm.controls.password.errors.required">Nombre requerido</div>
-        </div>
-        <div *ngIf="signinForm.controls.email.touched && signinForm.controls.email.errors" class="help-block">
-          <div *ngIf="signinForm.controls.email.errors.required">Correo electrónico requerido.</div>
-          <div *ngIf="signinForm.controls.email.errors.email">Correo electrónico inválido.</div>
-        </div>
-        <div *ngIf="signinForm.controls.password.touched && signinForm.controls.password.errors" class="help-block">
-          <div *ngIf="signinForm.controls.password.errors.required">Contraseña requerida.</div>
-          <div *ngIf="signinForm.controls.password.errors.minlength">La contraseña debe tener al menos 8 caracteres.</div>
-          <div *ngIf="signinForm.controls.password.errors.pattern">La contraseña debe tener al menos un número, dos mayúsculas y un caracter especial.</div>
-
-        </div>
-        <div *ngIf="signinForm.controls.passwordCheck.touched && signinForm.controls.passwordCheck.errors" class="help-block">
-          <div *ngIf="signinForm.controls.passwordCheck.errors.required">Verificación de contraseña requerida.</div>
-          <div *ngIf="signinForm.controls.passwordCheck.errors.mustMatch">Las contraseñas no coinciden.</div>
-        </div>
-    </div>
-    <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-        class="auth-button"
-        [disabled]="!signinForm.valid">
-        REGISTRARSE
-    </button>
-    <button
-        mat-raised-button
-        color="accent"
-        class="auth-button"
-        style="margin-top: 1rem"
-        routerLink="/login">
-        CANCELAR
-    </button>
-</form>
+<pk-user-form
+  (submitted)="signin($event)"
+  submitAction="REGISTRARSE"
+  showCancel="true"
+  (cancelled)="cancel()"
+  disableEmail="false">
+</pk-user-form>

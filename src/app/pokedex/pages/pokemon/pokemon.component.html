@@ -1,9 +1,9 @@
 <div class="pokedex-container">
-    <div class="pokemon-container">
+    <div class="pokemon-container" *ngIf="pokemon">
         <div class="main-container">
             <div class="basic-info">
                 <h5 class="pokemon-name">{{ pokemon?.name | titlecase }}</h5>
-                <img [src]="pokemon?.image" alt="(pokemon?.name" class="pokemon-img" />
+                <img [src]="pokemon?.image" [alt]="pokemon?.name" class="pokemon-img" />
             </div>
             <div class="basic-details">
                 <div class="detail-row">
@@ -61,5 +61,15 @@
                 </div>
             </div>
         </div>
+    </div>
+    <div class="not-found-container" *ngIf="notFound">
+        <span class="not-found-title">Ooops! Este pókemon no existe</span>
+        <img src="assets/images/pokemon.png" alt="Pókemon" class="not-found-img">
+        <button
+            mat-raised-button
+            color="primary"
+            (click)="goBack()">
+            IR ATRAS
+        </button>
     </div>
 </div>

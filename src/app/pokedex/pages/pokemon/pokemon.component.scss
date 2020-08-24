@@ -138,6 +138,24 @@
     }
 }
 
+.not-found-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+
+    .not-found-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+        margin: 1rem;
+        font-weight: 500;
+    }
+
+    img {
+        margin: 1rem;
+    }
+}
+
 @include small {
     .pokemon-container {
         flex-direction: column;

@@ -11,9 +11,10 @@ import { HomeComponent } from './pages/home/home.component';
 import { PokedexComponent } from './pages/pokedex/pokedex.component';
 import { PokemonComponent } from './pages/pokemon/pokemon.component';
 import { PokedexRoutingModule } from './pokedex-routing.module';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 @NgModule({
-  declarations: [PokedexComponent, PokemonComponent, HomeComponent, PokemonCardComponent, InfiniteScrollComponent],
+  declarations: [PokedexComponent, PokemonComponent, HomeComponent, PokemonCardComponent, InfiniteScrollComponent, ProfileComponent],
   imports: [
     CommonModule,
     PokedexRoutingModule,

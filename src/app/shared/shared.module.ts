@@ -4,10 +4,11 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { UserFormComponent } from './components/user-form/user-form.component';
 import { MovementPipe } from './pipes/movement.pipe';
 
 @NgModule({
-  declarations: [MovementPipe],
+  declarations: [MovementPipe, UserFormComponent],
   imports: [
     CommonModule,
     FormsModule,
@@ -22,7 +23,8 @@ import { MovementPipe } from './pipes/movement.pipe';
     MatInputModule,
     MatButtonModule,
     MatIconModule,
-    MovementPipe
+    MovementPipe,
+    UserFormComponent
   ]
 })
 export class SharedModule { }

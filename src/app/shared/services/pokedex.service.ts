@@ -16,6 +16,14 @@ export class PokedexService {
 
   constructor(private pokedexAPIService: PokedexApiService) { }
 
+
+  /**
+   * Retrieves all the information about the given Pokemon.
+   * If the results are cached they are retrived from the cache, otherwise and HTTP request is executed.
+   *
+   * @param pokemonInfo name and url of the pokemon to be loaded.
+   * @returns the information of the pokemon as an Observable.
+   */
   public loadPokemonInfo(pokemonInfo: PokemonInfo): Observable<Pokemon> {
     const cachedResult = this.pokemonDetail.get(pokemonInfo.name);
     if (cachedResult) {

@@ -96,6 +96,7 @@ export class PokedexComponent extends Subscribable implements OnInit {
       return true;
     }
 
+    // search by name or type
     return pokemon.name.search(regExp) !== -1 || pokemon.types.findIndex(type => regExp.test(type)) !== -1;
   }
 

@@ -49,10 +49,24 @@ export class PokedexApiService {
       .pipe(map((detail: PokemonDetail) => Util.mapPokemonDetailToPokemon(detail)));
   }
 
+
+  /**
+   * Retrieves information about a pokemon specie.
+   *
+   * @param url of the request.
+   * @returns the specie as an Observable.
+   */
   public getSpecie(url: string): Observable<Specie> {
     return this.http.get<Specie>(url);
   }
 
+
+  /**
+   * Retrieves the evolution chain of a given specie.
+   *
+   * @param url of the request.
+   * @returns the evolution chain as an Observable.
+   */
   public getEvolutionChain(url: string): Observable<EvolutionChainDetail> {
     return this.http.get<EvolutionChainDetail>(url);
   }

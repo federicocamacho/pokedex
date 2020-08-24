@@ -1,5 +1,13 @@
 import { FormGroup } from '@angular/forms';
 
+
+/**
+ * Validates that 2 given form controls have the same value.
+ *
+ * @export
+ * @param controlName first form control.
+ * @param matchingControlName second form control.
+ */
 export function MustMatch(controlName: string, matchingControlName: string) {
     return (formGroup: FormGroup) => {
         const control = formGroup.controls[controlName];

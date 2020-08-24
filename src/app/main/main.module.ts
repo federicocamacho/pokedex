@@ -6,8 +6,6 @@ import { AuthComponent } from './pages/auth/auth.component';
 import { LoginComponent } from './pages/login/login.component';
 import { SigninComponent } from './pages/signin/signin.component';
 
-
-
 @NgModule({
   declarations: [LoginComponent, SigninComponent, AuthComponent],
   imports: [

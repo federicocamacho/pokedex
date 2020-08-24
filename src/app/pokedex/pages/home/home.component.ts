@@ -56,7 +56,6 @@ export class HomeComponent extends Subscribable implements OnInit {
 
   public search(): void {
     const search = this.getSearchCriteria();
-    console.log('searching', search);
     this.router.navigate(['/pokedex'], { queryParams: { search }});
   }
 

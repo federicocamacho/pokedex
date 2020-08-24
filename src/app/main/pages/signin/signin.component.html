@@ -25,9 +25,13 @@
         </div>
         <div *ngIf="signinForm.controls.password.touched && signinForm.controls.password.errors" class="help-block">
           <div *ngIf="signinForm.controls.password.errors.required">Contraseña requerida.</div>
+          <div *ngIf="signinForm.controls.password.errors.minlength">La contraseña debe tener al menos 8 caracteres.</div>
+          <div *ngIf="signinForm.controls.password.errors.pattern">La contraseña debe tener al menos un número, dos mayúsculas y un caracter especial.</div>
+
         </div>
         <div *ngIf="signinForm.controls.passwordCheck.touched && signinForm.controls.passwordCheck.errors" class="help-block">
           <div *ngIf="signinForm.controls.passwordCheck.errors.required">Verificación de contraseña requerida.</div>
+          <div *ngIf="signinForm.controls.passwordCheck.errors.mustMatch">Las contraseñas no coinciden.</div>
         </div>
     </div>
     <button

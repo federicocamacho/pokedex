@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/shared/services/auth.service';
 import { MessageService } from 'src/app/shared/services/message.service';
+import { MustMatch } from 'src/app/shared/validators/must-match.validator';
 
 @Component({
   selector: 'pk-signin',
@@ -10,6 +11,7 @@ import { MessageService } from 'src/app/shared/services/message.service';
   styleUrls: ['./signin.component.scss']
 })
 export class SigninComponent implements OnInit {
+
 
   public signinForm: FormGroup;
 
@@ -22,10 +24,17 @@ export class SigninComponent implements OnInit {
   ngOnInit(): void {
     this.signinForm = this.formBuilder.group({
       email: ['', Validators.required],
-      password: ['', Validators.required],
+      password: ['', [
+          Validators.required,
+          Validators.minLength(8),
+          Validators.pattern(/\d/), // at least one number
+          Validators.pattern(/[A-Z].*[A-Z]/), // at least two capital case characters
+          Validators.pattern(/([!@#$%\^&*(){}[\]<>?/|\-]+)/) // at least one special character
+        ]
+      ],
       name: ['', Validators.required],
-      passwordCheck: ['', Validators.required]
-    });
+      passwordCheck: ['', [Validators.required, Validators.minLength(8)]]
+    }, { validators: MustMatch('password', 'passwordCheck') });
   }
 
   public signin(): void {

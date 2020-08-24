@@ -19,6 +19,9 @@
     .errors-container {
         text-align: center;
         height: 3rem;
+        display: flex;
+        flex-direction: column;
+        width: 80%;
 
         .help-block {
             color: var(--primary-color);

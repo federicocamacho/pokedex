@@ -1,38 +1,40 @@
-<div class="user-img-container">
-    <img src="assets/images/pikachu.png" alt="Usuario" class="user-img">
-</div>
-<form [formGroup]="loginForm" class="form-container" (ngSubmit)="login()">
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Correo electrónico</mat-label>
-        <input matInput type="email" placeholder="Correo electrónico" formControlName="email" email="true" />
-    </mat-form-field>
-    <mat-form-field class="auth-field" appearance="outline">
-        <mat-label>Contraseña</mat-label>
-        <input matInput type="password" placeholder="Contraseña" formControlName="password" />
-    </mat-form-field>
-    <div class="errors-container">
-        <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors" class="help-block">
-          <div *ngIf="loginForm.controls.email.errors.required">Correo electrónico requerido.</div>
-          <div *ngIf="loginForm.controls.email.errors.email">Correo electrónico inválido.</div>
-        </div>
-        <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors" class="help-block">
-          <div *ngIf="loginForm.controls.password.errors.required">Contraseña requerida.</div>
-        </div>
+<div class="animate__animated animate__fadeIn">
+    <div class="user-img-container">
+        <img src="assets/images/pikachu.png" alt="Usuario" class="user-img">
     </div>
-    <button
-        type="submit"
-        mat-raised-button
-        color="primary"
-        class="auth-button"
-        [disabled]="!loginForm.valid">
-        INICIAR SESIÓN
-    </button>
-    <button
-        mat-raised-button
-        color="accent"
-        class="auth-button"
-        style="margin-top: 1rem"
-        routerLink="/signin">
-        REGISTRARSE
-    </button>
-</form>
+    <form [formGroup]="loginForm" class="form-container" (ngSubmit)="login()">
+        <mat-form-field class="auth-field" appearance="outline">
+            <mat-label>Correo electrónico</mat-label>
+            <input matInput type="email" placeholder="Correo electrónico" formControlName="email" email="true" />
+        </mat-form-field>
+        <mat-form-field class="auth-field" appearance="outline">
+            <mat-label>Contraseña</mat-label>
+            <input matInput type="password" placeholder="Contraseña" formControlName="password" />
+        </mat-form-field>
+        <div class="errors-container">
+            <div *ngIf="loginForm.controls.email.touched && loginForm.controls.email.errors" class="help-block">
+              <div *ngIf="loginForm.controls.email.errors.required">Correo electrónico requerido.</div>
+              <div *ngIf="loginForm.controls.email.errors.email">Correo electrónico inválido.</div>
+            </div>
+            <div *ngIf="loginForm.controls.password.touched && loginForm.controls.password.errors" class="help-block">
+              <div *ngIf="loginForm.controls.password.errors.required">Contraseña requerida.</div>
+            </div>
+        </div>
+        <button
+            type="submit"
+            mat-raised-button
+            color="primary"
+            class="auth-button"
+            [disabled]="!loginForm.valid">
+            INICIAR SESIÓN
+        </button>
+        <button
+            mat-raised-button
+            color="accent"
+            class="auth-button"
+            style="margin-top: 1rem"
+            routerLink="/signin">
+            REGISTRARSE
+        </button>
+    </form>
+</div>

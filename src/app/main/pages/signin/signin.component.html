@@ -1,7 +1,9 @@
-<pk-user-form
-  (submitted)="signin($event)"
-  submitAction="REGISTRARSE"
-  showCancel="true"
-  (cancelled)="cancel()"
-  disableEmail="false">
-</pk-user-form>
+<div class="animate__animated animate__fadeIn">
+  <pk-user-form
+    (submitted)="signin($event)"
+    submitAction="REGISTRARSE"
+    [showCancel]="true"
+    (cancelled)="cancel()"
+    [disableEmail]="false">
+  </pk-user-form>
+</div>

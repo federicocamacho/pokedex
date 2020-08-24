@@ -1,6 +1,6 @@
 <div class="pokedex-container">
     <div class="pokemon-container" *ngIf="pokemon">
-        <div class="main-container">
+        <div class="main-container animate__animated animate__fadeInLeft">
             <div class="basic-info">
                 <h5 class="pokemon-name">{{ pokemon?.name | titlecase }}</h5>
                 <img [src]="pokemon?.image" [alt]="pokemon?.name" class="pokemon-img" />
@@ -42,7 +42,7 @@
                 </div>
             </div>
         </div>
-        <div class="detail-container">
+        <div class="detail-container animate__animated animate__fadeInRight">
             <div class="detail-row list-row">
                 <span class="detail-name">Movimientos:</span>
                 <div class="detail-value-container">
